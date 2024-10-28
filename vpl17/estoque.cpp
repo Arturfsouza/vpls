@@ -18,10 +18,16 @@ void Estoque::sub_mercadoria(const std::string& mercadoria, unsigned int qtd) {
 
 unsigned int Estoque::get_qtd(const std::string& mercadoria) const {
   // TODO
-  for(auto it=estoque.begin(); it!=estoque.end(); it++){
+  /*for(auto it=estoque.begin(); it!=estoque.end(); it++){
     if(it->first == mercadoria){
       return it->second;
     }
+  }*/
+  if(estoque.find(mercadoria)!=estoque.end()){
+    return estoque.find(mercadoria)->second;
+  }
+  else{
+    return 0;
   }
 }
 

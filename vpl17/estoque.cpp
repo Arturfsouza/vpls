@@ -13,7 +13,17 @@ void Estoque::add_mercadoria(const std::string& mercadoria, unsigned int qtd) {
 }
 
 void Estoque::sub_mercadoria(const std::string& mercadoria, unsigned int qtd) {
-  estoque.find(mercadoria)->second = estoque.find(mercadoria)->second - qtd;
+  if(estoque.find(mercadoria)!=estoque.end()){
+    if(estoque.find(mercadoria)->second - qtd<0){
+      estoque.find(mercadoria)->second = estoque.find(mercadoria)->second -qtd;
+    }
+    else{
+      std::cout<<mercadoria<<" insuficiente"<<std::endl;
+    }
+  }
+  else{
+    std::cout<<mercadoria<<" inexistente"<<std::endl;
+  }
 }
 
 unsigned int Estoque::get_qtd(const std::string& mercadoria) const {

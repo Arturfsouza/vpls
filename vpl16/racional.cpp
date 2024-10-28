@@ -14,9 +14,13 @@ Racional::Racional(int n){
 }
 
 Racional::Racional(int n, int d){
+    if(d == 0){
+        throw ExcecaoDivisaoPorZero{};
+    }
+    else{
     numerador_ = n;
     denominador_=d;
-    Simplificar();
+    Simplificar();}
 }
 
 int Racional::numerador() const{
@@ -45,6 +49,9 @@ Racional Racional::operator*(Racional k) const{
 }
 
 Racional Racional::operator/(Racional k) const{
+    if(k.numerador_ == 0){
+        throw ExcecaoDivisaoPorZero{};
+    }
     int num = this->numerador_ * k.denominador_;
     int den = this->denominador_ * k.numerador_;
     return Racional(num, den);

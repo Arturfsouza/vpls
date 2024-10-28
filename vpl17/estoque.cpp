@@ -3,12 +3,17 @@
 
 void Estoque::add_mercadoria(const std::string& mercadoria, unsigned int qtd) {
   // TODO
+  if(estoque.find(mercadoria) !=estoque.end()){
+    estoque.find(mercadoria)->second += qtd;
+  }
+  else
+  {
   estoque.insert({mercadoria, qtd});
+  }
 }
 
 void Estoque::sub_mercadoria(const std::string& mercadoria, unsigned int qtd) {
-  int qtd1 = estoque.find(mercadoria)->second;
-  qtd1 = qtd1 - qtd;
+  estoque.find(mercadoria)->second = estoque.find(mercadoria)->second - qtd;
 }
 
 unsigned int Estoque::get_qtd(const std::string& mercadoria) const {
